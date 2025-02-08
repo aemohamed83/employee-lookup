@@ -1,275 +1,202 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html>  
+<html lang="en">  
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticketing System Data</title>
-    <!-- Link to Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMUuD1qM0fG5Rk5n8bfu8KX2Bl7Y5T5X1eF0B7" crossorigin="anonymous">
-    <style>
-        body {
-            font-family: Arial, sans-serif; /* Arial font */
-            background-color: white; /* White background */
-            color: black; /* Black text */
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            animation: fade-in 0.5s ease;
-        }
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Ticketing System Data</title>  
+    <!-- Link to Font Awesome for icons -->  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMUuD1qM0fG5Rk5n8bfu8KX2Bl7Y5T5X1eF0B7" crossorigin="anonymous">  
+    <style>  
+        body {  
+            font-family: Arial, sans-serif; /* Arial font */  
+            background-color: white; /* White background */  
+            color: black; /* Black text */  
+            margin: 0;  
+            padding: 20px;  
+            display: flex;  
+            flex-direction: column;  
+            align-items: center;  
+            animation: fade-in 0.5s ease;  
+        }  
 
-        @keyframes fade-in {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
-        }
+        @keyframes fade-in {  
+            from {  
+                opacity: 0;  
+            }  
+            to {  
+                opacity: 1;  
+            }  
+        }  
 
-        h1 {
-            color: #333; /* Dark gray for header */
-            margin-bottom: 20px;
-            text-align: center;
-            animation: bounce 0.5s ease forwards;
-            opacity: 0;
-            animation-delay: 0.3s;
-        }
+        h1 {  
+            color: black; /* Black for header */  
+            margin-bottom: 20px;  
+            text-align: center;  
+            animation: bounce 0.5s ease forwards;  
+            opacity: 0;  
+            animation-delay: 0.3s;  
+        }  
 
-        @keyframes bounce {
-            0% {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            50% {
-                transform: translateY(10px);
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+        @keyframes bounce {  
+            0% {  
+                transform: translateY(-20px);  
+                opacity: 0;  
+            }  
+            50% {  
+                transform: translateY(10px);  
+            }  
+            100% {  
+                transform: translateY(0);  
+                opacity: 1;  
+            }  
+        }  
 
-        .container {
-            background-color: #f9f9f9; /* Light gray container background */
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            padding: 20px;
-            max-width: 400px;
-            width: 100%;
-            transition: transform 0.3s ease;
-            animation: slide-in 0.5s ease forwards;
-            opacity: 0;
-            animation-delay: 0.5s;
-        }
+        .container {  
+            background-color: #f9f9f9; /* Light gray container background */  
+            border-radius: 8px;  
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */  
+            padding: 20px;  
+            max-width: 400px;  
+            width: 100%;  
+            transition: transform 0.3s ease;  
+            animation: slide-in 0.5s ease forwards;  
+            opacity: 0;  
+            animation-delay: 0.5s;  
+        }  
 
-        @keyframes slide-in {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+        @keyframes slide-in {  
+            from {  
+                transform: translateY(-20px);  
+                opacity: 0;  
+            }  
+            to {  
+                transform: translateY(0);  
+                opacity: 1;  
+            }  
+        }  
 
-        label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
+        label {  
+            display: block;  
+            font-weight: bold;  
+            margin-bottom: 10px;  
+            transition: color 0.3s ease;  
+        }  
 
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc; /* Light gray border */
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-size: 16px;
-            background-color: white; /* White input background */
-            color: black; /* Black text */
-            transition: border-color 0.3s ease;
-        }
+        input[type="number"] {  
+            width: 100%;  
+            padding: 10px;  
+            border: 1px solid #ccc; /* Light gray border */  
+            border-radius: 4px;  
+            margin-bottom: 20px;  
+            font-size: 16px;  
+            background-color: white; /* White input background */  
+            color: black; /* Black text */  
+            transition: border-color 0.3s ease;  
+        }  
 
-        input[type="number"]:focus {
-            border-color: #007bff; /* Blue focus border */
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
-        }
+        input[type="number"]:focus {  
+            border-color: #007bff; /* Blue focus border */  
+            outline: none;  
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */  
+        }  
 
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007bff; /* Blue button */
-            color: white; /* White text */
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
+        button {  
+            width: 100%;  
+            padding: 10px;  
+            background-color: #007bff; /* Blue button */  
+            color: white; /* White text */  
+            border: none;  
+            border-radius: 4px;  
+            font-size: 16px;  
+            cursor: pointer;  
+            transition: background-color 0.3s ease, transform 0.2s ease;  
+        }  
 
-        button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-            transform: scale(1.05);
-        }
+        button:hover {  
+            background-color: #0056b3; /* Darker blue on hover */  
+            transform: scale(1.05);  
+        }  
 
-        .result {
-            margin-top: 20px;
-            animation: fade-in 0.5s ease;
-            transition: transform 0.3s ease;
-        }
+        .result {  
+            margin-top: 20px;  
+            animation: fade-in 0.5s ease;  
+            transition: transform 0.3s ease;  
+        }  
 
-        .error-message {
-            color: red; /* Red error message */
-            font-weight: bold;
-            margin: 10px 0;
-        }
+        .error-message {  
+            color: red; /* Red error message */  
+            font-weight: bold;  
+            margin: 10px 0;  
+        }  
 
-        .success-message {
-            color: green; /* Green success message */
-            font-weight: bold;
-            margin: 10px 0;
-        }
+        .success-message {  
+            color: green; /* Green success message */  
+            font-weight: bold;  
+            margin: 10px 0;  
+        }  
 
-        .contact-icon {
-            color: #007bff; /* Blue icon */
-            margin-right: 8px;
-        }
+        .contact-icon {  
+            color: #007bff; /* Blue icon */  
+            margin-right: 8px;  
+        }  
+    </style>  
+</head>  
 
-        .chart-container {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 400px;
-            animation: fade-in 0.5s ease;
-        }
+<body>  
+    <h1><i class="fas fa-ticket-alt"></i> Ticketing System Data</h1>  
+    <div class="container">  
+        <label for="employeeId"><i class="fas fa-id-card"></i> Enter Employee ID:</label>  
+        <input type="number" id="employeeId" placeholder="e.g., 20142" />  
+        <button id="lookupButton"><i class="fas fa-search"></i> Get Details</button>  
+    </div>  
+    <div class="result" id="detailsDiv"></div>  
 
-        .chart {
-            background-color: white; /* White chart background */
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        }
+    <script>  
+        document.getElementById('lookupButton').addEventListener('click', function () {  
+            const employeeId = document.getElementById('employeeId').value;  
+            const detailsDiv = document.getElementById('detailsDiv');  
 
-        /* Animation for icons */
-        .icon-animation {
-            animation: spin 1s ease-in-out;
-        }
+            // Clear previous results  
+            detailsDiv.innerHTML = '';  
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-    </style>
-</head>
+            fetch('employees.json') // Fetch the JSON file  
+                .then(response => {  
+                    if (!response.ok) {  
+                        throw new Error('Network response was not ok');  
+                    }  
+                    return response.json(); // Parse the JSON data  
+                })  
+                .then(data => {  
+                    console.log('Employee ID entered:', Number(employeeId));  
+                    console.log('Employees data:', data);  
 
-<body>
-    <h1><i class="fas fa-ticket-alt"></i> Ticketing System Data</h1>
-    <div class="container">
-        <label for="employeeId"><i class="fas fa-id-card"></i> Enter Employee ID:</label>
-        <input type="number" id="employeeId" placeholder="e.g., 20142" />
-        <button id="lookupButton"><i class="fas fa-search"></i> Get Details</button>
-    </div>
-    <div class="result" id="detailsDiv"></div>
-    <div class="chart-container" id="chartContainer">
-        <div class="chart" id="chart"></div>
-    </div>
-
-    <script>
-        document.getElementById('lookupButton').addEventListener('click', function () {
-            const employeeId = document.getElementById('employeeId').value;
-            const detailsDiv = document.getElementById('detailsDiv');
-            const chartContainer = document.getElementById('chartContainer');
-            const chart = document.getElementById('chart');
-
-            // Clear previous results
-            detailsDiv.innerHTML = '';
-            chart.innerHTML = '';
-
-            fetch('employees.json') // Fetch the JSON file
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json(); // Parse the JSON data
-                })
-                .then(data => {
-                    console.log('Employee ID entered:', Number(employeeId));
-                    console.log('Employees data:', data);
-
-                    // Adjusted to access the nested structure of User
-                    const employee = data.find(emp => emp.User['Employee ID'] === Number(employeeId));
-                    if (employee) {
-                        detailsDiv.innerHTML = `
-                            <div class="success-message">
-                                <p>
-                                    <i class="fas fa-user contact-icon icon-animation"></i>
-                                    <strong>Name:</strong> ${employee['First Name']}
-                                </p>
-                                <p>
-                                    <i class="fas fa-envelope contact-icon icon-animation"></i>
-                                    <strong>Email:</strong> ${employee['Business  Email Information Email Address']}
-                                </p>
-                            </div>
-                        `;
-
-                        // Example visualization (bar chart)
-                        chart.innerHTML = `
-                            <canvas id="employeeChart" width="400" height="200"></canvas>
-                        `;
-
-                        const ctx = document.getElementById('employeeChart').getContext('2d');
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Tickets Resolved', 'Tickets Pending'],
-                                datasets: [{
-                                    label: 'Tickets',
-                                    data: [employee['Tickets Resolved'], employee['Tickets Pending']],
-                                    backgroundColor: [
-                                        'rgba(0, 123, 255, 0.5)', // Blue for resolved
-                                        'rgba(255, 99, 132, 0.5)' // Red for pending
-                                    ],
-                                    borderColor: [
-                                        'rgba(0, 123, 255, 1)',
-                                        'rgba(255, 99, 132, 1)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                scales: {
-                                    y: {
-                                        beginAtZero: true
-                                    }
-                                }
-                            }
-                        });
-
-                        chartContainer.style.display = 'block';
-                    } else {
-                        detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Employee ID not found</p>';
-                        chartContainer.style.display = 'none';
-                    }
-                    detailsDiv.classList.add('fade-in'); // Add animation class to the result
-                })
-                .catch(error => {
-                    console.error('Error loading data:', error);
-                    detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Error loading data</p>';
-                    chartContainer.style.display = 'none';
-                });
-        });
-    </script>
-    <!-- Chart.js library for visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</body>
+                    // Adjusted to access the nested structure of User  
+                    const employee = data.find(emp => emp.User['Employee ID'] === Number(employeeId));  
+                    if (employee) {  
+                        detailsDiv.innerHTML = `  
+                            <div class="success-message">  
+                                <p>  
+                                    <i class="fas fa-user contact-icon"></i>  
+                                    <strong>Name:</strong> ${employee['First Name']}  
+                                </p>  
+                                <p>  
+                                    <i class="fas fa-envelope contact-icon"></i>  
+                                    <strong>Email:</strong> ${employee['Business  Email Information Email Address']}  
+                                </p>  
+                            </div>  
+                        `;  
+                    } else {  
+                        detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Employee ID not found</p>';  
+                    }  
+                    detailsDiv.classList.add('fade-in'); // Add animation class to the result  
+                })  
+                .catch(error => {  
+                    console.error('Error loading data:', error);  
+                    detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Error loading data</p>';  
+                });  
+        });  
+    </script>  
+</body>  
 
 </html>
