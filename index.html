@@ -7,13 +7,11 @@
     <title>Ticketing System Data</title>
     <!-- Link to Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMUuD1qM0fG5Rk5n8bfu8KX2Bl7Y5T5X1eF0B7" crossorigin="anonymous">
-    <!-- Link to Google Fonts for a digital font -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Orbitron', sans-serif; /* Digital font */
-            background-color: #1a1a1a; /* Dark background for digital theme */
-            color: #00ff00; /* Green text for digital look */
+            font-family: Arial, sans-serif; /* Arial font */
+            background-color: white; /* White background */
+            color: black; /* Black text */
             margin: 0;
             padding: 20px;
             display: flex;
@@ -32,7 +30,7 @@
         }
 
         h1 {
-            color: #00ff00; /* Green color for header */
+            color: #333; /* Dark gray for header */
             margin-bottom: 20px;
             text-align: center;
             animation: bounce 0.5s ease forwards;
@@ -55,9 +53,9 @@
         }
 
         .container {
-            background-color: #2a2a2a; /* Darker container background */
+            background-color: #f9f9f9; /* Light gray container background */
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 255, 0, 0.2); /* Green shadow */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
             padding: 20px;
             max-width: 400px;
             width: 100%;
@@ -88,26 +86,26 @@
         input[type="number"] {
             width: 100%;
             padding: 10px;
-            border: 1px solid #00ff00; /* Green border */
+            border: 1px solid #ccc; /* Light gray border */
             border-radius: 4px;
             margin-bottom: 20px;
             font-size: 16px;
-            background-color: #1a1a1a; /* Dark background */
-            color: #00ff00; /* Green text */
+            background-color: white; /* White input background */
+            color: black; /* Black text */
             transition: border-color 0.3s ease;
         }
 
         input[type="number"]:focus {
-            border-color: #00ff00; /* Green focus border */
+            border-color: #007bff; /* Blue focus border */
             outline: none;
-            box-shadow: 0 0 5px rgba(0, 255, 0, 0.5); /* Green glow */
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Blue glow */
         }
 
         button {
             width: 100%;
             padding: 10px;
-            background-color: #00ff00; /* Green button */
-            color: #1a1a1a; /* Dark text */
+            background-color: #007bff; /* Blue button */
+            color: white; /* White text */
             border: none;
             border-radius: 4px;
             font-size: 16px;
@@ -116,7 +114,7 @@
         }
 
         button:hover {
-            background-color: #00cc00; /* Darker green on hover */
+            background-color: #0056b3; /* Darker blue on hover */
             transform: scale(1.05);
         }
 
@@ -127,19 +125,19 @@
         }
 
         .error-message {
-            color: #ff0000; /* Red error message */
+            color: red; /* Red error message */
             font-weight: bold;
             margin: 10px 0;
         }
 
         .success-message {
-            color: #00ff00; /* Green success message */
+            color: green; /* Green success message */
             font-weight: bold;
             margin: 10px 0;
         }
 
         .contact-icon {
-            color: #00ff00; /* Green icon */
+            color: #007bff; /* Blue icon */
             margin-right: 8px;
         }
 
@@ -151,20 +149,34 @@
         }
 
         .chart {
-            background-color: #2a2a2a;
+            background-color: white; /* White chart background */
             border-radius: 8px;
             padding: 20px;
-            box-shadow: 0 4px 20px rgba(0, 255, 0, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        /* Animation for icons */
+        .icon-animation {
+            animation: spin 1s ease-in-out;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
 
 <body>
-    <h1>Ticketing System Data</h1>
+    <h1><i class="fas fa-ticket-alt"></i> Ticketing System Data</h1>
     <div class="container">
-        <label for="employeeId">Enter Employee ID:</label>
+        <label for="employeeId"><i class="fas fa-id-card"></i> Enter Employee ID:</label>
         <input type="number" id="employeeId" placeholder="e.g., 20142" />
-        <button id="lookupButton">Get Details</button>
+        <button id="lookupButton"><i class="fas fa-search"></i> Get Details</button>
     </div>
     <div class="result" id="detailsDiv"></div>
     <div class="chart-container" id="chartContainer">
@@ -199,10 +211,13 @@
                         detailsDiv.innerHTML = `
                             <div class="success-message">
                                 <p>
-                                    <i class="fas fa-address-book contact-icon"></i>
+                                    <i class="fas fa-user contact-icon icon-animation"></i>
                                     <strong>Name:</strong> ${employee['First Name']}
                                 </p>
-                                <p><strong>Email:</strong> ${employee['Business  Email Information Email Address']}</p>
+                                <p>
+                                    <i class="fas fa-envelope contact-icon icon-animation"></i>
+                                    <strong>Email:</strong> ${employee['Business  Email Information Email Address']}
+                                </p>
                             </div>
                         `;
 
@@ -220,12 +235,12 @@
                                     label: 'Tickets',
                                     data: [employee['Tickets Resolved'], employee['Tickets Pending']],
                                     backgroundColor: [
-                                        'rgba(0, 255, 0, 0.5)',
-                                        'rgba(255, 0, 0, 0.5)'
+                                        'rgba(0, 123, 255, 0.5)', // Blue for resolved
+                                        'rgba(255, 99, 132, 0.5)' // Red for pending
                                     ],
                                     borderColor: [
-                                        'rgba(0, 255, 0, 1)',
-                                        'rgba(255, 0, 0, 1)'
+                                        'rgba(0, 123, 255, 1)',
+                                        'rgba(255, 99, 132, 1)'
                                     ],
                                     borderWidth: 1
                                 }]
@@ -241,14 +256,14 @@
 
                         chartContainer.style.display = 'block';
                     } else {
-                        detailsDiv.innerHTML = '<p class="error-message">Employee ID not found</p>';
+                        detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Employee ID not found</p>';
                         chartContainer.style.display = 'none';
                     }
                     detailsDiv.classList.add('fade-in'); // Add animation class to the result
                 })
                 .catch(error => {
                     console.error('Error loading data:', error);
-                    detailsDiv.innerHTML = '<p class="error-message">Error loading data</p>';
+                    detailsDiv.innerHTML = '<p class="error-message"><i class="fas fa-exclamation-circle"></i> Error loading data</p>';
                     chartContainer.style.display = 'none';
                 });
         });
