@@ -31,31 +31,32 @@
             detailsDiv.innerHTML = '';  
 
             fetch('employees.json') // Fetch the JSON file  
-    .then(response => {  
-        if (!response.ok) {  
-            throw new Error('Network response was not ok');  
-        }  
-        return response.json(); // Parse the JSON data  
-    })  
-    .then(data => {  
-        console.log('Employee ID entered:', Number(employeeId));  
-        console.log('Employees data:', data);  
+                .then(response => {  
+                    if (!response.ok) {  
+                        throw new Error('Network response was not ok');  
+                    }  
+                    return response.json(); // Parse the JSON data  
+                })  
+                .then(data => {  
+                    console.log('Employee ID entered:', Number(employeeId));  
+                    console.log('Employees data:', data);  
 
-        // Adjusted to access the nested structure of User  
-        const employee = data.find(emp => emp.User['Employee ID'] === Number(employeeId));  
-        if (employee) {  
-            detailsDiv.innerHTML = `  
-                <p><strong>Name:</strong> ${employee['First Name']}</p>  
-                <p><strong>Email:</strong> ${employee['Business  Email Information Email Address']}</p>  
-            `;  
-        } else {  
-            detailsDiv.innerHTML = '<p class="error-message">Employee ID not found</p>';   
-        }  
-    })  
-    .catch(error => {  
-        console.error('Error loading data:', error);  
-        detailsDiv.innerHTML = '<p class="error-message">Error loading data</p>';  
-    }); 
+                    // Adjusted to access the nested structure of User  
+                    const employee = data.find(emp => emp.User['Employee ID'] === Number(employeeId));  
+                    if (employee) {  
+                        detailsDiv.innerHTML = `  
+                            <p><strong>Name:</strong> ${employee['First Name']}</p>  
+                            <p><strong>Email:</strong> ${employee['Business  Email Information Email Address']}</p>  
+                        `;  
+                    } else {  
+                        detailsDiv.innerHTML = '<p class="error-message">Employee ID not found</p>';  
+                    }  
+                })  
+                .catch(error => {  
+                    console.error('Error loading data:', error);  
+                    detailsDiv.innerHTML = '<p class="error-message">Error loading data</p>';  
+                });  
+        });  
     </script>  
 </body>  
 </html>
