@@ -1,38 +1,83 @@
 <!DOCTYPE html>  
 <html lang="en">  
+
 <head>  
     <meta charset="UTF-8">  
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  
-    <title>Employee Lookup</title>  
+    <title>Ticketing System Data</title>  
     <style>  
         body {  
-            font-family: Arial, sans-serif;  
-            background-color: #f4f4f4;  
+            font-family: 'Arial', sans-serif;  
+            background-color: #e9ecef;  
             margin: 0;  
             padding: 20px;  
             display: flex;  
             flex-direction: column;  
             align-items: center;  
+            animation: fade-in 0.5s ease;  
+        }  
+
+        @keyframes fade-in {  
+            from {  
+                opacity: 0;  
+            }  
+            to {  
+                opacity: 1;  
+            }  
         }  
 
         h1 {  
             color: #333;  
             margin-bottom: 20px;  
+            text-align: center;  
+            animation: bounce 0.5s ease forwards;  
+            opacity: 0;  
+            animation-delay: 0.3s;  
+        }  
+
+        @keyframes bounce {  
+            0% {  
+                transform: translateY(-20px);  
+                opacity: 0;  
+            }  
+            50% {  
+                transform: translateY(10px);  
+            }  
+            100% {  
+                transform: translateY(0);  
+                opacity: 1;  
+            }  
         }  
 
         .container {  
             background-color: white;  
             border-radius: 8px;  
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);  
             padding: 20px;  
             max-width: 400px;  
             width: 100%;  
+            transition: transform 0.3s ease;  
+            animation: slide-in 0.5s ease forwards;  
+            opacity: 0;  
+            animation-delay: 0.5s;  
+        }  
+
+        @keyframes slide-in {  
+            from {  
+                transform: translateY(-20px);  
+                opacity: 0;  
+            }  
+            to {  
+                transform: translateY(0);  
+                opacity: 1;  
+            }  
         }  
 
         label {  
             display: block;  
             font-weight: bold;  
             margin-bottom: 10px;  
+            transition: color 0.3s ease;  
         }  
 
         input[type="number"] {  
@@ -42,6 +87,13 @@
             border-radius: 4px;  
             margin-bottom: 20px;  
             font-size: 16px;  
+            transition: border-color 0.3s ease;  
+        }  
+
+        input[type="number"]:focus {  
+            border-color: #007bff;  
+            outline: none;  
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);  
         }  
 
         button {  
@@ -53,30 +105,36 @@
             border-radius: 4px;  
             font-size: 16px;  
             cursor: pointer;  
-            transition: background-color 0.3s ease;  
+            transition: background-color 0.3s ease, transform 0.2s ease;  
         }  
 
         button:hover {  
             background-color: #0056b3;  
+            transform: scale(1.05);  
         }  
 
         .result {  
             margin-top: 20px;  
+            animation: fade-in 0.5s ease;  
+            transition: transform 0.3s ease;  
         }  
 
         .error-message {  
             color: red;  
             font-weight: bold;  
+            margin: 10px 0;  
         }  
 
         .success-message {  
             color: green;  
             font-weight: bold;  
+            margin: 10px 0;  
         }  
     </style>  
 </head>  
+
 <body>  
-    <h1>Employee Lookup</h1>  
+    <h1>Ticketing System Data</h1>  
     <div class="container">  
         <label for="employeeId">Enter Employee ID:</label>  
         <input type="number" id="employeeId" placeholder="e.g., 20142" />  
@@ -85,7 +143,7 @@
     <div class="result" id="detailsDiv"></div>  
 
     <script>  
-        document.getElementById('lookupButton').addEventListener('click', function() {  
+        document.getElementById('lookupButton').addEventListener('click', function () {  
             const employeeId = document.getElementById('employeeId').value;  
             const detailsDiv = document.getElementById('detailsDiv');  
            
@@ -115,6 +173,7 @@
                     } else {  
                         detailsDiv.innerHTML = '<p class="error-message">Employee ID not found</p>';  
                     }  
+                    detailsDiv.classList.add('fade-in'); // Add animation class to the result  
                 })  
                 .catch(error => {  
                     console.error('Error loading data:', error);  
@@ -123,4 +182,5 @@
         });  
     </script>  
 </body>  
+
 </html>
